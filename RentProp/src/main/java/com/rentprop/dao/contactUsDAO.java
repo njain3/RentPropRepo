@@ -1,4 +1,4 @@
-package DAO;
+package com.rentprop.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
