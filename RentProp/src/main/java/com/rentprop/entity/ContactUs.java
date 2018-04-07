@@ -15,6 +15,7 @@ public class ContactUs implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="CONTACT_US_ID")
 	private int contactUsId;
 

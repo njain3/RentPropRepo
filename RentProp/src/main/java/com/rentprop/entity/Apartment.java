@@ -2,7 +2,6 @@ package com.rentprop.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.List;
 
 
@@ -16,6 +15,7 @@ public class Apartment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="APARTMENT_ID")
 	private int apartmentId;
 
@@ -37,7 +37,7 @@ public class Apartment implements Serializable {
 	@Column(name="NO_OF_BEDROOM")
 	private int noOfBedroom;
 
-	private float price;
+	private Float price;
 
 	@Column(name="RENTAL_STATUS")
 	private String rentalStatus;
@@ -45,7 +45,11 @@ public class Apartment implements Serializable {
 	private String state;
 
 	@Column(name="ZIP_CODE")
-	private BigInteger zipCode;
+	private Integer zipCode;
+
+	//bi-directional many-to-one association to ApartmentPhoto
+	@OneToMany(mappedBy="apartment")
+	private List<ApartmentPhoto> apartmentPhotos;
 
 	//bi-directional many-to-one association to Appointment
 	@OneToMany(mappedBy="apartment")
@@ -130,11 +134,11 @@ public class Apartment implements Serializable {
 		this.noOfBedroom = noOfBedroom;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
@@ -154,12 +158,34 @@ public class Apartment implements Serializable {
 		this.state = state;
 	}
 
-	public BigInteger getZipCode() {
+	public Integer getZipCode() {
 		return this.zipCode;
 	}
 
-	public void setZipCode(BigInteger zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public List<ApartmentPhoto> getApartmentPhotos() {
+		return this.apartmentPhotos;
+	}
+
+	public void setApartmentPhotos(List<ApartmentPhoto> apartmentPhotos) {
+		this.apartmentPhotos = apartmentPhotos;
+	}
+
+	public ApartmentPhoto addApartmentPhoto(ApartmentPhoto apartmentPhoto) {
+		getApartmentPhotos().add(apartmentPhoto);
+		apartmentPhoto.setApartment(this);
+
+		return apartmentPhoto;
+	}
+
+	public ApartmentPhoto removeApartmentPhoto(ApartmentPhoto apartmentPhoto) {
+		getApartmentPhotos().remove(apartmentPhoto);
+		apartmentPhoto.setApartment(null);
+
+		return apartmentPhoto;
 	}
 
 	public List<Appointment> getAppointments() {

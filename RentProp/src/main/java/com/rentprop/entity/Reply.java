@@ -14,6 +14,7 @@ public class Reply implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="REPLY_ID")
 	private int replyId;
 

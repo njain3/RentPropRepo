@@ -14,6 +14,7 @@ public class Appointment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="APPOINTMENT_ID")
 	private int appointmentId;
 

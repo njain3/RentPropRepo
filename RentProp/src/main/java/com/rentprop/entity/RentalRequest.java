@@ -16,6 +16,7 @@ public class RentalRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="RENTAL_REQUEST_ID")
 	private int rentalRequestId;
 

@@ -1,13 +1,17 @@
 package com.rentprop.dto;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 public class LoginDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private int login_id;
-	private String user_name;
+	private String username;
+	private String emailId;
+	private String firstName;
+	private String lastName;
 	private String password;
-	private String user_type;
+	private BigInteger phoneNumber;
+	private String usertype;
 	
 	/**
 	 * 
@@ -15,74 +19,114 @@ public class LoginDTO implements Serializable{
 	public LoginDTO() {
 		super();
 	}
-
 	/**
-	 * @param login_id
-	 * @param user_name
+	 * @param username
+	 * @param emailId
+	 * @param firstName
+	 * @param lastName
 	 * @param password
-	 * @param user_type
+	 * @param phoneNumber
+	 * @param usertype
 	 */
-	public LoginDTO(int login_id, String user_name, String password, String user_type) {
+	public LoginDTO(String username, String emailId, String firstName, String lastName, String password,
+			BigInteger phoneNumber, String usertype) {
 		super();
-		this.login_id = login_id;
-		this.user_name = user_name;
+		this.username = username;
+		this.emailId = emailId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
-		this.user_type = user_type;
+		this.phoneNumber = phoneNumber;
+		this.usertype = usertype;
 	}
-
 	/**
-	 * @return the login_id
+	 * @return the username
 	 */
-	public int getLogin_id() {
-		return login_id;
+	public String getUsername() {
+		return username;
 	}
-
 	/**
-	 * @param login_id the login_id to set
+	 * @param username the username to set
 	 */
-	public void setLogin_id(int login_id) {
-		this.login_id = login_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
 	/**
-	 * @return the user_name
+	 * @return the emailId
 	 */
-	public String getUser_name() {
-		return user_name;
+	public String getEmailId() {
+		return emailId;
 	}
-
 	/**
-	 * @param user_name the user_name to set
+	 * @param emailId the emailId to set
 	 */
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
-
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	/**
-	 * @return the user_type
+	 * @return the phoneNumber
 	 */
-	public String getUser_type() {
-		return user_type;
+	public BigInteger getPhoneNumber() {
+		return phoneNumber;
 	}
-
 	/**
-	 * @param user_type the user_type to set
+	 * @param phoneNumber the phoneNumber to set
 	 */
-	public void setUser_type(String user_type) {
-		this.user_type = user_type;
+	public void setPhoneNumber(BigInteger phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	/**
+	 * @return the usertype
+	 */
+	public String getUsertype() {
+		return usertype;
+	}
+	/**
+	 * @param usertype the usertype to set
+	 */
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

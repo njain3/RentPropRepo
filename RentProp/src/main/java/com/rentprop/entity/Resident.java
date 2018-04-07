@@ -2,7 +2,6 @@ package com.rentprop.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.List;
 
 
@@ -16,27 +15,11 @@ public class Resident implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="RESIDENT_ID")
 	private int residentId;
 
 	private String address;
-
-	@Column(name="EMAIL_ID")
-	private String emailId;
-
-	@Column(name="FIRST_NAME")
-	private String firstName;
-
-	@Column(name="LAST_NAME")
-	private String lastName;
-
-	private String password;
-
-	@Column(name="PHONE_NUMBER")
-	private BigInteger phoneNumber;
-
-	@Column(name="USER_TYPE")
-	private String userType;
 
 	//bi-directional many-to-one association to MaintenanceRequest
 	@OneToMany(mappedBy="resident")
@@ -55,9 +38,9 @@ public class Resident implements Serializable {
 	@JoinColumn(name="APARTMENT_ID")
 	private Apartment apartment;
 
-	//bi-directional one-to-one association to User
-	@OneToOne
-	@JoinColumn(name="USER_ID")
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="USERNAME")
 	private User user;
 
 	public Resident() {
@@ -77,54 +60,6 @@ public class Resident implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getEmailId() {
-		return this.emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getFirstName() {
-		return this.firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return this.lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public BigInteger getPhoneNumber() {
-		return this.phoneNumber;
-	}
-
-	public void setPhoneNumber(BigInteger phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getUserType() {
-		return this.userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
 	}
 
 	public List<MaintenanceRequest> getMaintenanceRequests() {

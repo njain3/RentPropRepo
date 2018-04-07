@@ -15,17 +15,20 @@ public class ApartmentPhoto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PHOTO_ID")
 	private int photoId;
-
-	@Column(name="APARTMENT_ID")
-	private int apartmentId;
 
 	@Column(name="ENCRYPTED_NAME")
 	private String encryptedName;
 
 	@Column(name="FILE_NAME")
 	private String fileName;
+
+	//bi-directional many-to-one association to Apartment
+	@ManyToOne
+	@JoinColumn(name="APARTMENT_ID")
+	private Apartment apartment;
 
 	public ApartmentPhoto() {
 	}
@@ -36,14 +39,6 @@ public class ApartmentPhoto implements Serializable {
 
 	public void setPhotoId(int photoId) {
 		this.photoId = photoId;
-	}
-
-	public int getApartmentId() {
-		return this.apartmentId;
-	}
-
-	public void setApartmentId(int apartmentId) {
-		this.apartmentId = apartmentId;
 	}
 
 	public String getEncryptedName() {
@@ -60,6 +55,14 @@ public class ApartmentPhoto implements Serializable {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public Apartment getApartment() {
+		return this.apartment;
+	}
+
+	public void setApartment(Apartment apartment) {
+		this.apartment = apartment;
 	}
 
 }
